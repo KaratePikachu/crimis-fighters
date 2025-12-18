@@ -5,7 +5,7 @@ const SPEED = 500.0
 func move(delta : float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := player.input.movement_input.x
+	var direction : float = player.input.movement_input.x
 	if direction:
 		player.velocity.x = direction * SPEED
 	else:
