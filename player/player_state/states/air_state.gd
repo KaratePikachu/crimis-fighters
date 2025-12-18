@@ -12,8 +12,6 @@ func process_physics(delta : float) -> PlayerState:
 			return player.idle_state
 		else:
 			return player.walk_state
-	if player.input.jump:
-		print(player.jump_component.has_double_jump)
-	if player.input.jump and player.jump_component.has_double_jump:
-		player.jump_component.jump()
+	if player.jump_component.jump():
+		return player.air_state
 	return null

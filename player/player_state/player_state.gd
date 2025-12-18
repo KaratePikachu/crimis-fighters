@@ -8,5 +8,8 @@ func enter() -> void:
 func exit() -> void:
 	pass
 
-func process_physics(delta : float) -> PlayerState:
+func update_state(delta : float) -> PlayerState:
+	return null
+
+func process_physics(delta : float) -> void:
 	return null
