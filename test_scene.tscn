@@ -1,6 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcxhmtf0gejrf"]
+[gd_scene load_steps=7 format=3 uid="uid://bcxhmtf0gejrf"]
 
-[ext_resource type="PackedScene" uid="uid://bsjm8mf1mlh1d" path="res://player.tscn" id="1_uhqqe"]
+[ext_resource type="PackedScene" uid="uid://bsjm8mf1mlh1d" path="res://player/player.tscn" id="1_uhqqe"]
+[ext_resource type="Script" uid="uid://uohcgl8gl3pu" path="res://controller/follow_controller.gd" id="2_ia1lp"]
+[ext_resource type="Script" uid="uid://btvp57g3f40uw" path="res://controller/human_controller.gd" id="2_sasra"]
+
+[sub_resource type="Resource" id="Resource_ia1lp"]
+script = ExtResource("2_sasra")
+metadata/_custom_type_script = "uid://btvp57g3f40uw"
+
+[sub_resource type="Resource" id="Resource_sasra"]
+script = ExtResource("2_ia1lp")
+metadata/_custom_type_script = "uid://uohcgl8gl3pu"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhqqe"]
 size = Vector2(1280, 112)
@@ -8,6 +18,10 @@ size = Vector2(1280, 112)
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_uhqqe")]
+controller = SubResource("Resource_ia1lp")
+
+[node name="Player2" parent="." instance=ExtResource("1_uhqqe")]
+controller = SubResource("Resource_sasra")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(576, 592)

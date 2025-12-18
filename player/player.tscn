@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://bsjm8mf1mlh1d"]
+
+[ext_resource type="Script" uid="uid://cs5hnx0vq7lic" path="res://player/player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://bcokgy2m44oay" path="res://player/player_state/player_state_machine.gd" id="2_rkbax"]
+[ext_resource type="Script" uid="uid://ba1mlebtx4e6d" path="res://player/player_state/states/air_state.gd" id="3_qjkh3"]
+[ext_resource type="Script" uid="uid://wvpljkevf228" path="res://player/player_state/states/idle_state.gd" id="4_g6k8r"]
+[ext_resource type="Script" uid="uid://w6cn1gd3234f" path="res://player/player_state/states/walk_state.gd" id="5_boad6"]
+[ext_resource type="Script" uid="uid://cr43aouqpmlr0" path="res://player/components/movement_component.gd" id="5_g6k8r"]
+[ext_resource type="Script" uid="uid://ccy108s6y6csw" path="res://player/components/gravity_component.gd" id="5_qjkh3"]
+[ext_resource type="Script" uid="uid://b1ag4ocp18t1l" path="res://player/components/jump_component.gd" id="8_rgyib"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
+size = Vector2(48, 64)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+script = ExtResource("1_4flbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4flbx")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("2_rkbax")
+starting_state = NodePath("AirState")
+metadata/_custom_type_script = "uid://bcokgy2m44oay"
+
+[node name="IdleState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("4_g6k8r")
+metadata/_custom_type_script = "uid://wvpljkevf228"
+
+[node name="WalkState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("5_boad6")
+metadata/_custom_type_script = "uid://w6cn1gd3234f"
+
+[node name="AirState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("3_qjkh3")
+metadata/_custom_type_script = "uid://ba1mlebtx4e6d"
+
+[node name="Components" type="Node" parent="."]
+
+[node name="MovementComponent" type="Node" parent="Components"]
+script = ExtResource("5_g6k8r")
+metadata/_custom_type_script = "uid://cr43aouqpmlr0"
+
+[node name="GravityComponent" type="Node" parent="Components"]
+script = ExtResource("5_qjkh3")
+metadata/_custom_type_script = "uid://ccy108s6y6csw"
+
+[node name="JumpComponent" type="Node" parent="Components"]
+script = ExtResource("8_rgyib")
+metadata/_custom_type_script = "uid://b1ag4ocp18t1l"
