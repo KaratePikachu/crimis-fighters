@@ -34,4 +34,4 @@ func _physics_process(delta: float) -> void:
 
 func decide_input() -> void:
 	input = controller.get_input()
-	input.movement_input = input.movement_input.normalized()
+	input.movement_vector = input.movement_vector.normalized()

@@ -14,4 +14,3 @@ func jump() -> bool:
 		
 func can_jump() -> bool:
 	return player.is_on_floor() or has_double_jump
-	

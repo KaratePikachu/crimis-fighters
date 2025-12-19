@@ -3,7 +3,7 @@ extends PlayerState
 
 func process_physics(delta : float) -> PlayerState:
 	player.gravity_component.gravity(delta)
-	player.movement_component.move(delta)
+	player.movement_component.move()
 	
 	
 	

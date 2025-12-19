@@ -17,12 +17,11 @@ func process_physics(delta : float) -> void:
 	#print(current_state)
 	var new_state : PlayerState = current_state.process_physics(delta)
 	if new_state != null: 
-		#print(new_state)
+		print(new_state)
 		change_state(new_state)
 
 func change_state(new_state : PlayerState) -> void:
 	if current_state:
 		current_state.exit()
 	current_state = new_state
-	#print(get_parent().input.movement_input)
 	current_state.enter()
