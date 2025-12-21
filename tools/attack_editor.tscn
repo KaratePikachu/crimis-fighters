@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bf6mk5g6p5lyt"]
-
-[ext_resource type="Script" uid="uid://cf66n4qayl7hu" path="res://tools/attack_editor.gd" id="1_at6eo"]
-
-[node name="AttackEditor" type="Area2D"]
-script = ExtResource("1_at6eo")

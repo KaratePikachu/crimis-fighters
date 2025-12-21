@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://bf6mk5g6p5lyt"]
+
+[ext_resource type="Script" uid="uid://cf66n4qayl7hu" path="res://tools/fd_editor.gd" id="1_picvo"]
+[ext_resource type="Script" uid="uid://cdas2p2qr7gad" path="res://tools/fde_frame.gd" id="2_4k0dh"]
+[ext_resource type="Script" uid="uid://deakld6p33v0l" path="res://tools/fde_attack.gd" id="2_d2m0f"]
+[ext_resource type="PackedScene" uid="uid://bsjm8mf1mlh1d" path="res://player/player.tscn" id="3_d2m0f"]
+
+[sub_resource type="Animation" id="Animation_3u1wt"]
+resource_name = "test"
+step = 0.016666668
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.13333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"export"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r4h7f"]
+_data = {
+&"test": SubResource("Animation_3u1wt")
+}
+
+[node name="FDEditor" type="Node2D"]
+script = ExtResource("1_picvo")
+
+[node name="FDEAttack" type="Node2D" parent="."]
+script = ExtResource("2_d2m0f")
+
+[node name="AttackAnimation" type="AnimationPlayer" parent="FDEAttack"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_r4h7f")
+}
+
+[node name="Frame0" type="Node2D" parent="FDEAttack"]
+script = ExtResource("2_4k0dh")
+
+[node name="Frame1" type="Node2D" parent="FDEAttack"]
+visible = false
+script = ExtResource("2_4k0dh")
+frame_number = 20
+
+[node name="Frame2" type="Node2D" parent="FDEAttack"]
+visible = false
+script = ExtResource("2_4k0dh")
+frame_number = 50
+
+[node name="Player" parent="." instance=ExtResource("3_d2m0f")]
